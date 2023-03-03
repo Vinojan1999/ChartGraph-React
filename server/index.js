@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/api/get', (req, res) => {
-    const sqlSelect = "SELECT years_x, amount_y FROM chart_bluebay;"
+    const sqlSelect = "SELECT years_x, amount_y FROM chart_string;"
     db.query(sqlSelect, (err, result) => {
         if (err) return res.sendStatus(404).json(err);
         // console.log('Result: '+ result);

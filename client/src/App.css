@@ -7,3 +7,7 @@
 .app__chart {
   width: 720px;
 }
+
+.app__chart div:nth-child(1) {
+  margin-bottom: 3rem;
+}

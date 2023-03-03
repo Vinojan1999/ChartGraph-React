@@ -41,15 +41,23 @@ function LineChart() {
       .then((response) => {
         var years = [];
         var amount = [];
-        var temp =data
-        for(var i=0; i<response.data.length; i++) {
-          years.push(response.data[i].years_x);
-          amount.push(response.data[i].amount_y);
-        }
+        var temp = data
+
+        var yearString = response.data[0].years_x;
+        var amountString = response.data[0].amount_y;
+
+        // to split string to array
+        yearString.split(/\s*,\s*/).forEach(function(myString) {
+          years.push(parseInt(myString));   // to convert to Integer
+        });
+        amountString.split(/\s*,\s*/).forEach(function(myString) {
+          amount.push(parseInt(myString));
+        });
+        
         temp.labels = years;
-        temp.datasets[0].data = amount;
+        temp.datasets[0].data = amount;   // datasets is an array so here using [0] syntax
         setDataList(temp);
-        console.log(temp.datasets.label);
+        console.log(temp);
       })
       .catch((err) => {
         console.log(err);
